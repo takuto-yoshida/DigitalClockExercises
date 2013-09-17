@@ -8,29 +8,29 @@ import java.util.logging.SimpleFormatter;
 import resource.AppStyle;
 
 public class AppLog {
-	
-	private AppLog(){	
+
+	private AppLog() {
 	}
-	
+
 	public static final String APP_START_MSG = "プログラムを開始します。";
 	public static final String APP_END_MSG = "プログラムを終了します。";
 	public static final String APP_CONF_ERR_MSG = "設定ファイルの異常です。";
 
-	public static Logger createAppLogger(String className){
+	public static Logger createAppLogger(String className) {
 
 		Logger logger = null;
-		
-		try{
-            FileHandler fh = new FileHandler(AppStyle.LOG_FILE_NAME);
-            //Logger.getGlobal().setLevel(Level.INFO); // Java SE6 まではこれを呼ぶ必要がある。
-            logger = Logger.getLogger(className);
-            fh.setFormatter(new SimpleFormatter());
-            logger.addHandler(fh);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-		return logger ;
+
+		try {
+			FileHandler fh = new FileHandler(AppStyle.LOG_FILE_NAME);
+			// Logger.getGlobal().setLevel(Level.INFO); // Java SE6まではこれを呼ぶ必要がある。
+			logger = Logger.getLogger(className);
+			fh.setFormatter(new SimpleFormatter());
+			logger.addHandler(fh);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return logger;
 	}
-	
+
 }
